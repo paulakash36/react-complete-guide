@@ -11,7 +11,7 @@ class App extends Component {
         </header>
         <Person name="Akash" age="22"/>
         <Person name="Kiran" age="25"/>
-        <Person name="sTRYKzEr" age="23"/>
+        <Person name="sTRYKzEr" age="23">My Hobby: Gaming</Person>
       </div>
  
     );
