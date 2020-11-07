@@ -23,7 +23,15 @@ state =  {
     });
     console.log(this.state);
   }
-
+  nameChangedhandler = (event) => {
+    this.setState({
+      person: [
+        {name:"Akash", age:"22"},
+        {name:event.target.value , age:"25"},
+        {name:"sTRYKzEr2", age:"23"}
+      ]
+    });
+  }
   
 render() {
 
@@ -44,7 +52,8 @@ render() {
 
         <Person 
         name={this.state.person[1].name} 
-        age={this.state.person[1].age}/>
+        age={this.state.person[1].age}
+        changed={this.nameChangedhandler}/>
 
         <Person 
         name={this.state.person[2].name} 
