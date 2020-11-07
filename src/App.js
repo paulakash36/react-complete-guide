@@ -34,7 +34,14 @@ state =  {
   }
   
 render() {
-
+    const style = {
+      backgroundColor: '#bbb',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      boxShadow: '0 10px 8px #000',
+      cursor: 'pointer'
+    }
 
     return (
       <div className="App">
@@ -43,7 +50,7 @@ render() {
         </header>
         <br />
 
-        <button onClick = {this.switchNameHandler.bind(this, 'AKA')}>Switch name</button>
+        <button style={style} onClick = {this.switchNameHandler.bind(this, 'AKA')}>Switch name</button>
         
         <Person 
         name={this.state.person[0].name} 
