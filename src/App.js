@@ -10,7 +10,8 @@ state =  {
   {name:"Kiran", age:"25"},
   {name:"sTRYKzEr", age:"23"}
   ],
-  otherState : 'some other state'
+  otherState : 'some other state',
+  showPerson : false
 }
 
   switchNameHandler = (newName) => {
@@ -32,6 +33,14 @@ state =  {
       ]
     });
   }
+
+  togglePersonHandler = () => {
+    const showPersons = this.state.showPerson;
+    this.setState({
+      showPerson : !showPersons
+    });
+  }
+
   
 render() {
     const style = {
@@ -50,24 +59,27 @@ render() {
         </header>
         <br />
 
-        <button style={style} onClick = {this.switchNameHandler.bind(this, 'AKA')}>Switch name</button>
-        
-        <Person 
-        name={this.state.person[0].name} 
-        age={this.state.person[0].age}
-        click = {this.switchNameHandler.bind(this, 'AK')} />
+        <button style={style} onClick = {this.togglePersonHandler}>Toggle Person</button>
+        {
+          this.state.showPerson === true ?
+          <div>
+          <Person 
+            name={this.state.person[0].name} 
+            age={this.state.person[0].age}
+            click = {this.switchNameHandler.bind(this, 'AK')} />
 
-        <Person 
-        name={this.state.person[1].name} 
-        age={this.state.person[1].age}
-        changed={this.nameChangedhandler}/>
+          <Person 
+            name={this.state.person[1].name} 
+            age={this.state.person[1].age}
+            changed={this.nameChangedhandler}/>
 
-        <Person 
-        name={this.state.person[2].name} 
-        age={this.state.person[2].age}
-        click = {() => {this.switchNameHandler('PK')}}>My Hobby: Gaming</Person>
+          <Person 
+            name={this.state.person[2].name} 
+            age={this.state.person[2].age}
+            click = {() => {this.switchNameHandler('PK')}}>My Hobby: Gaming</Person>
+          </div> : null
+        }
       </div>
- 
     );
   }
 }
