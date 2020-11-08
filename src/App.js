@@ -41,6 +41,12 @@ state =  {
     });
   }
 
+  personDeleteHandler = (personIndex) => {
+    const persons = this.state.person;
+    persons.splice(personIndex,1);
+    this.setState({persons: persons});
+  }
+
   
 render() {
     const style = {
@@ -57,8 +63,11 @@ render() {
     if (this.state.showPerson) {
       person = (
         <div>
-        {this.state.person.map( person => {
-          return <Person name={person.name} age={person.age} />
+        {this.state.person.map( (person,index) => {
+          return <Person
+              click={() => {this.personDeleteHandler(index)}}
+              name={person.name} 
+              age={person.age} />
         })}
         </div>
       );
