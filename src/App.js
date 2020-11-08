@@ -52,33 +52,38 @@ render() {
       cursor: 'pointer'
     }
 
+    let person = null;
+
+    if (this.state.showPerson) {
+      person =(
+        <div>
+        <Person 
+          name={this.state.person[0].name} 
+          age={this.state.person[0].age}
+          click = {this.switchNameHandler.bind(this, 'AK')} />
+
+        <Person 
+          name={this.state.person[1].name} 
+          age={this.state.person[1].age}
+          changed={this.nameChangedhandler}/>
+
+        <Person 
+          name={this.state.person[2].name} 
+          age={this.state.person[2].age}
+          click = {() => {this.switchNameHandler('PK')}}>My Hobby: Gaming</Person>
+        </div>
+      );
+    }
+
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <br />
-
         <button style={style} onClick = {this.togglePersonHandler}>Toggle Person</button>
-        {
-          this.state.showPerson === true ?
-          <div>
-          <Person 
-            name={this.state.person[0].name} 
-            age={this.state.person[0].age}
-            click = {this.switchNameHandler.bind(this, 'AK')} />
-
-          <Person 
-            name={this.state.person[1].name} 
-            age={this.state.person[1].age}
-            changed={this.nameChangedhandler}/>
-
-          <Person 
-            name={this.state.person[2].name} 
-            age={this.state.person[2].age}
-            click = {() => {this.switchNameHandler('PK')}}>My Hobby: Gaming</Person>
-          </div> : null
-        }
+        {person}
       </div>
     );
   }
