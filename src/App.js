@@ -27,9 +27,9 @@ state =  {
   nameChangedhandler = (event) => {
     this.setState({
       person: [
-        {name:"Akash", age:"22"},
-        {name:event.target.value , age:"25"},
-        {name:"sTRYKzEr2", age:"23"}
+        {id: "1", name:"Akash", age:"22"},
+        {id: "2",name:event.target.value , age:"25"},
+        {id: "3",name:"sTRYKzEr2", age:"23"}
       ]
     });
   }
@@ -68,7 +68,8 @@ render() {
           return <Person
               click={() => this.personDeleteHandler(index)}
               name={person.name} 
-              age={person.age} />
+              age={person.age}
+              key={person.id} />
         })}
         </div>
       );
