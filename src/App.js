@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   
 state =  {
-  person: [
+  persons: [
   {name:"Akash", age:"22"},
   {name:"Kiran", age:"25"},
   {name:"sTRYKzEr", age:"23"}
@@ -16,7 +16,7 @@ state =  {
 
   switchNameHandler = (newName) => {
     this.setState({
-      person: [
+      persons: [
         {name:newName, age:"22"},
         {name:"Kiran", age:"25"},
         {name:"sTRYKzEr2", age:"23"}
@@ -24,13 +24,25 @@ state =  {
     });
     console.log(this.state);
   }
-  nameChangedhandler = (event) => {
+
+  nameChangedhandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex((p) => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    // const person = Object.assign({}, this.state.person[personIndex]);
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
     this.setState({
-      person: [
-        {id: "1", name:"Akash", age:"22"},
-        {id: "2",name:event.target.value , age:"25"},
-        {id: "3",name:"sTRYKzEr2", age:"23"}
-      ]
+      persons: persons
     });
   }
 
@@ -42,10 +54,10 @@ state =  {
   }
 
   personDeleteHandler = (personIndex) => {
-    // const persons = this.state.person.slice();
-    const persons = [...this.state.person];
-    persons.splice(personIndex, 1);
-    this.setState({person: persons});
+    // const person = this.state.persons.slice();
+    const person = [...this.state.persons];
+    person.splice(personIndex, 1);
+    this.setState({persons: person});
   }
 
   
@@ -64,12 +76,13 @@ render() {
     if (this.state.showPerson) {
       person = (
         <div>
-        {this.state.person.map( (person, index) => {
+        {this.state.persons.map( (person, index) => {
           return <Person
               click={() => this.personDeleteHandler(index)}
               name={person.name} 
               age={person.age}
-              key={person.id} />
+              key={person.id} 
+              changed={(event) => {this.nameChangedhandler(event, person.id)}}/>
         })}
         </div>
       );
