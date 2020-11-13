@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Person from './Person/Person';
 import './App.css';
 
@@ -42,9 +42,10 @@ state =  {
   }
 
   personDeleteHandler = (personIndex) => {
-    const persons = this.state.person;
-    persons.splice(personIndex,1);
-    this.setState({persons: persons});
+    // const persons = this.state.person.slice();
+    const persons = [...this.state.person];
+    persons.splice(personIndex, 1);
+    this.setState({person: persons});
   }
 
   
@@ -63,9 +64,9 @@ render() {
     if (this.state.showPerson) {
       person = (
         <div>
-        {this.state.person.map( (person,index) => {
+        {this.state.person.map( (person, index) => {
           return <Person
-              click={() => {this.personDeleteHandler(index)}}
+              click={() => this.personDeleteHandler(index)}
               name={person.name} 
               age={person.age} />
         })}
