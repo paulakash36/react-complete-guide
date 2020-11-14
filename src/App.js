@@ -63,7 +63,7 @@ state =  {
   
 render() {
     const style = {
-      backgroundColor: '#bbb',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -86,6 +86,7 @@ render() {
         })}
         </div>
       );
+      style.backgroundColor='red';
     }
 
 
