@@ -89,6 +89,15 @@ render() {
       style.backgroundColor='red';
     }
 
+   const classes = []
+    
+   if (this.state.persons.length <=2) {
+     classes.push('red');
+   }
+   if (this.state.persons.length <=1) {
+     classes.push('bold');
+   }
+
 
     return (
       <div className="App">
@@ -96,6 +105,7 @@ render() {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <br />
+        <p className={classes.join(' ')}>This is really Working!!!</p>
         <button style={style} onClick = {this.togglePersonHandler}>Toggle Person</button>
         {person}
       </div>
