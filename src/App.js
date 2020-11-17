@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
+import styled from 'styled-components';
 import './App.css';
+
 // import Radium, {StyleRoot} from 'radium';
+
+const StyledButton = styled.button`
+background-color: green;
+font: inherit;
+border: 1px solid blue;
+padding: 8px;
+box-shadow: 0 10px 8px #000;
+cursor: pointer;
+&:hover {
+  background-color: lightgreen;
+  color: black;
+}
+`;
+
 
 class App extends Component {
   
@@ -63,18 +79,18 @@ state =  {
 
   
 render() {
-    const style = {
-      backgroundColor: 'green',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      boxShadow: '0 10px 8px #000',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
+    // const style = {
+    //   backgroundColor: 'green',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   boxShadow: '0 10px 8px #000',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightgreen',
+    //     color: 'black'
+    //   }
+    // }
 
     let person = null;
 
@@ -91,11 +107,11 @@ render() {
         })}
         </div>
       );
-      style.backgroundColor='red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      // style.backgroundColor='red';
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     }
 
    const classes = []
@@ -116,7 +132,7 @@ render() {
         </header>
         <br />
         <p className={classes.join(' ')}>This is really Working!!!</p>
-        <button style={style} onClick = {this.togglePersonHandler}>Toggle Person</button>
+        <StyledButton onClick = {this.togglePersonHandler}>Toggle Person</StyledButton>
         {person}
       </div>
     // </StyleRoot>
