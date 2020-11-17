@@ -6,14 +6,14 @@ import './App.css';
 // import Radium, {StyleRoot} from 'radium';
 
 const StyledButton = styled.button`
-background-color: green;
+background-color: ${props => props.alt ? 'red' : 'green'};
 font: inherit;
 border: 1px solid blue;
 padding: 8px;
 box-shadow: 0 10px 8px #000;
 cursor: pointer;
 &:hover {
-  background-color: lightgreen;
+  background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
   color: black;
 }
 `;
@@ -132,7 +132,7 @@ render() {
         </header>
         <br />
         <p className={classes.join(' ')}>This is really Working!!!</p>
-        <StyledButton onClick = {this.togglePersonHandler}>Toggle Person</StyledButton>
+        <StyledButton alt={this.state.showPerson} onClick = {this.togglePersonHandler}>Toggle Person</StyledButton>
         {person}
       </div>
     // </StyleRoot>
