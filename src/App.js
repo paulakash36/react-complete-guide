@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
-import './App.css';
+import classes from './App.css';
 
 // import Radium, {StyleRoot} from 'radium';
 
@@ -80,6 +80,7 @@ render() {
     // }
 
     let person = null;
+    let btnClass = [classes.Button];
 
     if (this.state.showPerson) {
       person = (
@@ -99,27 +100,28 @@ render() {
       //   backgroundColor: 'salmon',
       //   color: 'black'
       // }
+      btnClass.push(classes.Red);
     }
 
-   const classes = []
+   const assignedClasses = []
     
    if (this.state.persons.length <=2) {
-     classes.push('red');
+    assignedClasses.push(classes.red);
    }
    if (this.state.persons.length <=1) {
-     classes.push('bold');
+    assignedClasses.push(classes.bold);
    }
 
 
     return (
       // <StyleRoot>
-      <div className="App">
+      <div className={classes.App}>
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <br />
-        <p className={classes.join(' ')}>This is really Working!!!</p>
-        <button className="button" onClick = {this.togglePersonHandler}>Toggle Person</button>
+        <p className={assignedClasses.join(' ')}>This is really Working!!!</p>
+        <button className={btnClass.join(' ')} onClick = {this.togglePersonHandler}>Toggle Person</button>
         {person}
       </div>
     // </StyleRoot>
