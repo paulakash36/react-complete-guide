@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Person from './Person/Person';
 import classes from './App.css';
 
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+
 // import Radium, {StyleRoot} from 'radium';
 
 
@@ -86,12 +88,14 @@ render() {
       person = (
         <div>
         {this.state.persons.map( (person, index) => {
-          return <Person
+          return 
+          <ErrorBoundary key={person.id}>
+            <Person
               click={() => this.personDeleteHandler(index)}
               name={person.name} 
               age={person.age}
-              key={person.id} 
               changed={(event) => {this.nameChangedhandler(event, person.id)}}/>
+          </ErrorBoundary>
         })}
         </div>
       );
@@ -115,6 +119,7 @@ render() {
 
     return (
       // <StyleRoot>
+      <ErrorBoundary>
       <div className={classes.App}>
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
@@ -124,6 +129,7 @@ render() {
         <button className={btnClass.join(' ')} onClick = {this.togglePersonHandler}>Toggle Person</button>
         {person}
       </div>
+      </ErrorBoundary>
     // </StyleRoot>
     );
   }
