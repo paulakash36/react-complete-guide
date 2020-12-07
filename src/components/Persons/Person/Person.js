@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Person.css';
 // import Radium from 'radium';
 
@@ -17,21 +17,27 @@ import classes from './Person.css';
 // ` ;
 
 
-const person = (props) => {
+class Person extends Component {
     // const style = {
     //     '@media (min-width : 500px)' : {
     //         width: '450px'
     //     }
     // }
-    return (
-        // <div className="Person" style={style}>
-        <div className={classes.Person}>
-            <p onClick={props.click}>This is a {props.name} and is {props.age} years old...</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name}></input>
-        </div>
-        // </div>
-    )
+    render () {
+        console.log('[Person.js] rendering...');
+        return (
+            // <div className="Person" style={style}>
+            <div className={classes.Person}>
+                <p onClick={this.props.click}>This is a {this.props.name} and is {this.props.age} years old...</p>
+                <p>{this.props.children}</p>
+                <input type="text" 
+                onChange={this.props.changed} 
+                value={this.props.name} />
+            </div>
+            // </div>
+        );
+    }
+    
 }
 
-export default person;
+export default Person;
