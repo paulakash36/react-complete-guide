@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+    // implement componentDidMount and componentDidUpdate lifecycles for functional components. 
+    useEffect(() => {
+        console.log("[Cockpit.js] useEffect...")
+        // HTTP request....
+    }) 
     
     const assignedClasses = []
     let btnClass = '';
