@@ -19,7 +19,8 @@ class App extends Component {
         {id:'3', name:"sTRYKzEr", age:"23"}
         ],
         otherState : 'some other state',
-        showPerson : false
+        showPerson : false,
+        showCockpit: true
     }
   };
 
@@ -32,7 +33,7 @@ class App extends Component {
     console.log('[App.js] componentDidMount');
   }
 
-  shouldComponentUpdate(nextPros,nextState){
+  shouldComponentUpdate(nextPros,nextState) {
     console.log('[App.js] shouldComponentUpdate');
     return true;
   }
@@ -40,6 +41,8 @@ class App extends Component {
   componentDidUpdate() {
     console.log('[App.js] componentDidUpdate');
   }
+
+  
 
   switchNameHandler = (newName) => {
     this.setState({
@@ -104,11 +107,18 @@ render() {
     return (
       // <StyleRoot>
       <div className={classes.App}>
-        <Cockpit 
-        showPersons={this.state.showPerson}
-        persons={this.state.persons}
-        clicked={this.togglePersonHandler}
-        />
+        <button onClick = {() => {this.setState({showCockpit:false})}}>Remove Cockpit</button>
+        {
+          this.state.showCockpit ?   
+          <Cockpit 
+          showPersons={this.state.showPerson}
+          persons={this.state.persons}
+          clicked={this.togglePersonHandler}
+          />
+          : null
+
+        }
+     
         {person}
       </div>
 

@@ -9,9 +9,18 @@ const cockpit = (props) => {
         setTimeout(() => {
             alert("An alert message");
         }, 1000);
-    }, [props.persons]); //pass an empty array if the useEffect is need to be used only when the app renders
+        return () => {
+            console.log('[Cockpit.js] Cleanup Work in useEffect');
+        };
+    }, []); //pass an empty array if the useEffect is need to be used only when the app renders
                         //we can pass more than one variable in the array, if we want to check for multiple state change. 
 
+    useEffect(() => {
+        console.log("[Cockpit.js] 2nd useEffect...");
+        return () => {
+            console.log('[Cockpit.js]  Cleanup Work in 2nd useEffect');
+        };
+    });
     // useEffect();
     
     const assignedClasses = []
