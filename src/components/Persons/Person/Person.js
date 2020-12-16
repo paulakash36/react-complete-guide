@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Aux from '../../../hoc/Auxiliary';
 import classes from './Person.css';
 // import Radium from 'radium';
 
@@ -27,13 +28,16 @@ class Person extends Component {
         console.log('[Person.js] rendering...');
         return (
             // <div className="Person" style={style}>
-            <div className={classes.Person}>
+            // <div className={classes.Person}>
+            <Aux>
                 <p onClick={this.props.click}>This is a {this.props.name} and is {this.props.age} years old...</p>
                 <p>{this.props.children}</p>
                 <input type="text" 
                 onChange={this.props.changed} 
                 value={this.props.name} />
-            </div>
+            </Aux>
+             
+            // </div>
             // </div>
         );
     }
