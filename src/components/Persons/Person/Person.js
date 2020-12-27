@@ -2,6 +2,7 @@ import React, { Component,Fragment } from 'react';
 import Aux from '../../../hoc/Auxiliary';
 import classes from './Person.css';
 import withClass from '../../../hoc/withClass';
+import PropTypes from 'prop-types';
 // import Radium from 'radium';
 
 
