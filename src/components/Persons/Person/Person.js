@@ -45,6 +45,7 @@ class Person extends Component {
                 <p onClick={this.props.click}>This is a {this.props.name} and is {this.props.age} years old...</p>
                 <p>{this.props.children}</p>
                 <input type="text" 
+                // ref = {(inputEl) => {this.inputElement = inputEl}}
                 ref = {this.inputElementRef}
                 onChange={this.props.changed} 
                 value={this.props.name} />
