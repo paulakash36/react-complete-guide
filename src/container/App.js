@@ -21,7 +21,8 @@ class App extends Component {
         otherState : 'some other state',
         showPerson : false,
         showCockpit: true,
-        changeCounter: 0
+        changeCounter: 0,
+        authenticated: false
     }
   };
 
@@ -93,7 +94,11 @@ class App extends Component {
     person.splice(personIndex, 1);
     this.setState({persons: person});
   }
-
+  
+  loginHandler = () => {
+    this.setState({authenticated: true});
+  }
+ 
   
 render() {
 
@@ -105,7 +110,8 @@ render() {
       person = <Persons 
           persons={this.state.persons} 
           changed ={this.nameChangedhandler}
-          clicked = {this.personDeleteHandler} />
+          clicked = {this.personDeleteHandler}
+          isAuthenticated={this.state.authenticated} />
     }
     
     return (
@@ -118,6 +124,7 @@ render() {
           showPersons={this.state.showPerson}
           persons={this.state.persons}
           clicked={this.togglePersonHandler}
+          login={this.loginHandler}
           />
           : null
 
