@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Persons from '../components/Persons/Persons';
 import classes from './App.css';
-
 import Cockpit from '../components/Cockpit/Cockpit';
-
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Auxiliary';
 // import Radium, {StyleRoot} from 'radium';
 
 
@@ -106,7 +106,7 @@ render() {
     
     return (
       // <StyleRoot>
-      <div className={classes.App}>
+      <Aux>
         <button onClick = {() => {this.setState({showCockpit:false})}}>Remove Cockpit</button>
         {
           this.state.showCockpit ?   
@@ -120,14 +120,14 @@ render() {
         }
      
         {person}
-      </div>
+      </Aux>
 
     // </StyleRoot>
     );
   }
 }
 
-export default App;
+export default withClass(App,classes.App);
  
 
 
